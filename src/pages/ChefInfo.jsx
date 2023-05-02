@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import RecipeCard from '../components/Cards/RecipeCard';
 
 const ChefInfo = () => {
 
@@ -10,7 +11,7 @@ const ChefInfo = () => {
             .then(res => res.json())
             .then(data => setChef(data[0]))
     }, [])
-    const { id, chefPicture, chefName, yearsOfExperience, numberOfRecipes, likes, bio, recipe } = chef;
+    const { id, chefPicture, chefName, yearsOfExperience, numberOfRecipes, likes, bio, recipes } = chef;
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
@@ -27,7 +28,10 @@ const ChefInfo = () => {
             </div>
             <div>
                 {
-                    
+                    recipes.map(recipe=> <RecipeCard
+                    key={recipe._id}
+                    recipe={recipe}
+                    ></RecipeCard>)
                 }
             </div>
         </div>
