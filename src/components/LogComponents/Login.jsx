@@ -1,14 +1,17 @@
 import React, { useContext } from 'react';
 import { Form, Link } from 'react-router-dom';
 import { FaGithub, FaGoogle } from "react-icons/fa";
-
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider } from "firebase/auth";
+
+const githubProvider = new GithubAuthProvider();
 const provider = new GoogleAuthProvider();
 
 const Login = () => {
-    const { signInUser,createUserGoogle } = useContext(AuthContext);
+    const { user, signInUser, createUserPopUp, setUser } = useContext(AuthContext);
+    console.log(user);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from.pathname || '/'
@@ -22,6 +25,7 @@ const Login = () => {
         signInUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
+                setUser(loggedUser);
                 console.log(loggedUser);
                 navigate(from)
             })
@@ -30,18 +34,27 @@ const Login = () => {
             })
         form.reset()
     }
-    const handleGoogleLogIn =(event)=>{
-        createUserGoogle(provider)
-        .then(result=>{
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            navigate(from)
-        })
-        .catch(error=>console.log(error))
+    const handleGoogleLogIn = (event) => {
+        createUserPopUp(provider)
+            .then(result => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                navigate(from)
+            })
+            .catch(error => console.log(error))
     }
-    
+    const handleGithubLogIn = event => {
+        createUserPopUp(githubProvider)
+            .then(result => {
+                const credential = GithubAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const loggedUser = result.user;
+            })
+            .catch(error => console.log(error.message))
+    }
+
     return (
         <div>
             <h2>Please login</h2>
@@ -59,10 +72,10 @@ const Login = () => {
                     <input name="password" type="password" placeholder="Your Password" className="input input-bordered w-full max-w-xs" />
                 </div>
                 <div>
-                    <button onClick={handleGoogleLogIn} className='btn'><FaGoogle/>Login with Google</button>
+                    <button onClick={handleGoogleLogIn} className='btn'><FaGoogle />Login with Google</button>
                 </div>
                 <div>
-                    <image><FaGithub/></image>
+                    <button onClick={handleGithubLogIn} className='btn'><FaGithub />Login with Github</button>
                 </div>
                 <div>
                     <p>New to Chef Recipe Hunter? <Link className='text-primary' to="/register">Please register</Link> </p>

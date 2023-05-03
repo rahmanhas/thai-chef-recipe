@@ -7,10 +7,10 @@ const ChefInfo = () => {
     const __id = useParams().id
     const [chef, setChef] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/chefinfo/${__id}`)
+        fetch(`https://chef-recipe-hunter-server-beryl.vercel.app/chefinfo/${__id}`)
             .then(res => res.json())
             .then(data => setChef(data[0]))
-    }, [])
+    }, [__id])
     const { id, chefPicture, chefName, yearsOfExperience, numberOfRecipes, likes, bio, recipes } = chef;
     return (
         <div>
@@ -28,7 +28,7 @@ const ChefInfo = () => {
             </div>
             <div>
                 {
-                    recipes.map(recipe=> <RecipeCard
+                    recipes?.map(recipe=> <RecipeCard
                     key={recipe._id}
                     recipe={recipe}
                     ></RecipeCard>)

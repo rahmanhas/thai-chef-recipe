@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
 const RecipeCard = ({ recipe }) => {
     const { id, recipeName, ingredients, cookingMethod, rating } = recipe;
-
+    const [buttonDisable, setButtonDisable] =useState(true)
     const handleFavoriteButton = () => {
-        toast('Here is your toast.');
+        toast('This recipe is your favorite');
+        setButtonDisable(false);
     }
     return (
 
@@ -20,7 +21,7 @@ const RecipeCard = ({ recipe }) => {
                 <p>Cooking Method: {cookingMethod}</p>
                 <p>Rating: {rating}</p>
                 <div className="card-actions justify-end">
-                    <button onClick={handleFavoriteButton} className="btn btn-primary">Favorite</button>
+                    <button onClick={handleFavoriteButton} className={buttonDisable ? "btn btn-primary": "btn-disable"} >Favorite</button>
                     <Toaster />
                 </div>
             </div>
