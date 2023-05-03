@@ -14,6 +14,7 @@ import Register from './components/LogComponents/Register.jsx';
 import ChefInfo from './pages/ChefInfo.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
+import PrivateRoute from './components/routes/PrivateRoutes.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/chefinfo/:id',
-        element: <ChefInfo />,
+        element: <PrivateRoute><ChefInfo /></PrivateRoute>
       },
     ]
 
