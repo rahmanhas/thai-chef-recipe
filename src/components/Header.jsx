@@ -1,10 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Header = () => {
     //delete this line
-    const user = null; 
+    //const user = 1; 
+    const {user,logOut} = useContext(AuthContext)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from.pathname || '/'
 
+    const handleLogOut =()=>{
+        logOut()
+        .then(navigate(from))
+        .catch(error=>console.log(error.message))
+    }
     return (
         <div className='bg-base-200'>
             <div className="navbar bg-base-200">
@@ -32,7 +42,11 @@ const Header = () => {
                 <div className="navbar-end">
                     {
                         user ?
-                        <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />:
+                        <>
+                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />;
+                            <button className='btn btn-primary'  onClick={handleLogOut}>Log Out</button>
+                        </>:
+                        
                         <Link className='btn btn-primary' to="/login">Log in</Link>
                         
                     }

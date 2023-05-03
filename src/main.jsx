@@ -12,15 +12,16 @@ import Home from './pages/Home.jsx';
 import Login from './components/LogComponents/Login.jsx';
 import Register from './components/LogComponents/Register.jsx';
 import ChefInfo from './pages/ChefInfo.jsx';
+import AuthProvider from './Provider/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main/>,
-    children:[
+    element: <Main />,
+    children: [
       {
         path: '/',
-        element: <Home/>,
+        element: <Home />,
       },
       {
         path: '/blog',
@@ -28,23 +29,25 @@ const router = createBrowserRouter([
       },
       {
         path: '/login',
-        element: <Login/>
+        element: <Login />
       },
       {
         path: '/register',
-        element: <Register/>
+        element: <Register />
       },
       {
         path: '/chefinfo/:id',
-        element: <ChefInfo/>,
+        element: <ChefInfo />,
       },
     ]
-    
+
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
