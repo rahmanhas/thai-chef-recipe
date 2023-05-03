@@ -1,12 +1,14 @@
 import React from 'react';
 import Header from '../Header';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate, useNavigation } from 'react-router-dom';
 import Footer from '../Footer';
 
 const Main = () => {
+    const navigation = useNavigation()
     return (
         <div>
             <Header/>
+            <div>{navigation.state==="loading" && <button className="btn loading">loading</button>}</div>
             <Outlet/>
             <Footer/>
         </div>
