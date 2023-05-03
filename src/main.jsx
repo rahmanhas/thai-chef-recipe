@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/chefinfo/:id',
-        element: <ChefInfo/>
+        element: <ChefInfo/>,
       },
     ]
     
