@@ -26,7 +26,7 @@ const ChefInfo = () => {
                     </div>
                 </div>
             </div>
-            <div>
+            <div className='grid lg:grid-cols-2 my-12 justify-center items-center mx-auto'>
                 {
                     recipes?.map(recipe=> <RecipeCard
                     key={recipe._id}

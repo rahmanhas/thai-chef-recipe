@@ -17,7 +17,7 @@ const Register = () => {
             setError("password must be higher than 6 characters");
             return
         }
-        if(password ===""){
+        if(password===""){
             setError("Enter Password");
             return
         }

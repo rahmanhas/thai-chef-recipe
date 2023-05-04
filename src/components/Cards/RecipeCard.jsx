@@ -10,7 +10,7 @@ const RecipeCard = ({ recipe }) => {
     }
     return (
 
-        <div className="card w-96 bg-green-50 text-green-700 shadow-xl border-2 border-green-900 text-left">
+        <div className="card w-96 bg-green-50 text-green-700 shadow-xl border-2 border-green-900 text-left mx-auto max-h-fit lg:h-[700px] my-5">
             <div className="card-body font-bold">
                 <h2 className="card-title font-extrabold py-5">Recipe Name: {recipeName}</h2>
                 <ol className='text-left list-disk'>Ingredients:
