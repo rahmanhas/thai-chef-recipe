@@ -11,7 +11,7 @@ const provider = new GoogleAuthProvider();
 
 const Login = () => {
     const { user, signInUser, createUserPopUp, setUser, error,setError } = useContext(AuthContext);
-    setError("")''
+    setError("")
     
     const navigate = useNavigate();
     const location = useLocation();
