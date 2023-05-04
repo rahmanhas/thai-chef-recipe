@@ -10,18 +10,19 @@ const RecipeCard = ({ recipe }) => {
     }
     return (
 
-        <div className="card w-96 bg-base-100 shadow-xl">
-            <div className="card-body">
-                <h2 className="card-title">{recipeName}</h2>
-                <ol className='text-left'>Ingredients:
+        <div className="card w-96 bg-green-50 text-green-700 shadow-xl border-2 border-green-900 text-left">
+            <div className="card-body font-bold">
+                <h2 className="card-title font-extrabold py-5">Recipe Name: {recipeName}</h2>
+                <ol className='text-left list-disk'>Ingredients:
                     {
-                        ingredients.map(item => <li>{item}</li>)
+                        ingredients.map(item => <li className='ps-3'>- {item}</li>)
                     }
                 </ol>
-                <p>Cooking Method: {cookingMethod}</p>
+                <p>Cooking Method:</p>
+                <p>   {cookingMethod}</p>
                 <p>Rating: {rating}</p>
                 <div className="card-actions justify-end">
-                    <button onClick={handleFavoriteButton} className={buttonDisable ? "btn btn-primary": "btn-disable"} >Favorite</button>
+                    <button onClick={handleFavoriteButton} className={buttonDisable ? "btn btn-primary bg-green-700 hover:bg-green-900 border-0": "btn-disable border-2 p-3 bg-green-200 border-green-400 rounded-lg"} >Favorite</button>
                     <Toaster />
                 </div>
             </div>

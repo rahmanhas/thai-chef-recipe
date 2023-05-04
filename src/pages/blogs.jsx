@@ -1,11 +1,20 @@
 import React from 'react';
+import html2pdf from 'html2pdf.js';
+
+function saveAsPDF() {
+    const element = document.getElementById('my-div');
+    html2pdf()
+      .from(element)
+      .save();
+  }
 
 const Blogs = () => {
     return (
 
         <div>
             <h2 className='text-2xl lg:text-6xl font-extrabold text-green-700 my-12'>Blogs</h2>
-            <div className='my-12 grid lg:grid-cols-2 gap-4 justify-center items-center mx-auto rounded-2xl'>
+            <button onClick={saveAsPDF} className='btn btn-primary border-0 bg-green-700 hover:bg-green-900'>Generate PDF</button>
+            <div id='my-div' className='my-6 grid lg:grid-cols-2 gap-4 justify-center items-center mx-auto rounded-2xl'>
                 <div className="card w-96 bg-base-100 shadow-xl lg:h-[700px] max-h-fit mx-auto my-12 border-2 border-green-700">
                     <div className="card-body">
                         <h2 className="card-title">Tell us the differences between uncontrolled and controlled components?</h2>

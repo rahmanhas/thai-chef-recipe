@@ -14,15 +14,15 @@ const ChefInfo = () => {
     const { id, chefPicture, chefName, yearsOfExperience, numberOfRecipes, likes, bio, recipes } = chef;
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="my-12 hero min-h-fit bg-green-50 rounded-2xl">
                 <div className="hero-content flex-col lg:flex-row">
-                    <img src={chefPicture} className="max-w-sm rounded-lg shadow-2xl" />
+                    <img src={chefPicture} className="max-w-sm rounded-lg shadow-2xl h-[300px] w-[300px]" />
                     <div>
-                        <h1 className="text-5xl font-bold">{chefName}</h1>
-                        <p className="py-6">{bio}</p>
-                        <p className="py-6">{likes}</p>
-                        <p className="py-6">{numberOfRecipes}</p>
-                        <p className="py-6">{yearsOfExperience}</p>
+                        <h1 className="text-5xl font-bold text-green-700">Name: {chefName}</h1>
+                        <p className="py-6 text-green-700">Bio: {bio}</p>
+                        <p className="py-6 text-green-700">No of Likes: {likes}</p>
+                        <p className="py-6 text-green-700">No of Recipes{numberOfRecipes}</p>
+                        <p className="py-6 text-green-700">Years of Experience{yearsOfExperience}</p>
                     </div>
                 </div>
             </div>

@@ -10,8 +10,9 @@ const githubProvider = new GithubAuthProvider();
 const provider = new GoogleAuthProvider();
 
 const Login = () => {
-    const { user, signInUser, createUserPopUp, setUser } = useContext(AuthContext);
-    console.log(user);
+    const { user, signInUser, createUserPopUp, setUser, error,setError } = useContext(AuthContext);
+    setError("")''
+    
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from.pathname || '/'
@@ -26,12 +27,21 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 setUser(loggedUser);
-                console.log(loggedUser);
                 navigate(from)
+                setError("")
             })
             .catch(error => {
-                console.log(error.message);
-            })
+                if(error.message == "Firebase: Error (auth/user-not-found)"){
+               
+                    setError(error.message)
+                }
+                else{
+                    setError(error.message)
+
+                }})
+                
+
+                
         form.reset()
     }
     const handleGoogleLogIn = (event) => {
@@ -40,10 +50,11 @@ const Login = () => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                setUser(loggedUser);
                 navigate(from)
+                setError("")
             })
-            .catch(error => console.log(error))
+            .catch(error => setError(error))
     }
     const handleGithubLogIn = event => {
         createUserPopUp(githubProvider)
@@ -51,37 +62,45 @@ const Login = () => {
                 const credential = GithubAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
                 const loggedUser = result.user;
+                setUser(loggedUser);
+                navigate(from)
+                setError("")
             })
-            .catch(error => console.log(error.message))
+            .catch(error => setError(error.message))
     }
 
     return (
         <div>
-            <h2>Please login</h2>
+            <h2 className='text-6xl font-bold text-green-700 my-12'>Please login</h2>
             <Form className='flex flex-col justify-center items-center' onSubmit={handleLogin} >
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input name="email" type="email" placeholder="Your email" className="input input-bordered w-full max-w-xs" />
+                    <input name="email" type="email" placeholder="Your email" className="input input-bordered w-full max-w-xs" required/>
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input name="password" type="password" placeholder="Your Password" className="input input-bordered w-full max-w-xs" />
+                    <input name="password" type="password" placeholder="Your Password" className="input input-bordered w-full max-w-xs" required/>
                 </div>
                 <div>
-                    <button onClick={handleGoogleLogIn} className='btn'><FaGoogle />Login with Google</button>
+                    <p className='text-red-500 my-3'>{error}</p>
+                </div>
+
+                <div>
+                    <p className='my-3'>New to Chef Recipe Hunter? <Link className='text-primary' to="/register">Please register</Link> </p>
+                </div>
+                <input className='my-3 btn btn-primary bg-green-700 hover:bg-green-900' type="submit" value="Submit" />
+                <div>
+                    <button onClick={handleGoogleLogIn} className='my-3 btn btn-outline btn-info'><FaGoogle />Login with Google</button>
                 </div>
                 <div>
-                    <button onClick={handleGithubLogIn} className='btn'><FaGithub />Login with Github</button>
+                    <button onClick={handleGithubLogIn} className='mt-3 mb-10 btn btn-outline btn-warning'><FaGithub />Login with Github</button>
                 </div>
-                <div>
-                    <p>New to Chef Recipe Hunter? <Link className='text-primary' to="/register">Please register</Link> </p>
-                </div>
-                <input className='btn btn-primary' type="submit" value="Submit" />
             </Form>
+
         </div>
     );
 };

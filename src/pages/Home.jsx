@@ -8,6 +8,7 @@ import partner4 from '../assets/partner-4.jpg';
 import partner5 from '../assets/partner-5.png';
 import LazyLoad from 'react-lazy-load';
 
+
 const Home = () => {
     const [chefs, setChefs] = useState([]);
 
@@ -21,7 +22,12 @@ const Home = () => {
             <div className="hero min-h-fit my-12 bg-base-100 rounded-2xl">
                 {/* Banner Section */}
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <img src="https://img.freepik.com/free-vector/chef-character-design_1322-128.jpg?w=740&t=st=1682968134~exp=1682968734~hmac=1856a512f527ba4efae561988c50269d635ecd8830464e57b02d10b7f4352871" className="max-w-sm rounded-lg shadow-2xl bg-green-700" />
+                    <div>
+                        <LazyLoad >
+
+                            <img src="https://img.freepik.com/free-vector/chef-character-design_1322-128.jpg?w=740&t=st=1682968134~exp=1682968734~hmac=1856a512f527ba4efae561988c50269d635ecd8830464e57b02d10b7f4352871" className="max-w-sm rounded-lg shadow-2xl bg-green-700" />
+                        </LazyLoad>
+                    </div>
                     <div>
                         <h1 className="text-5xl lg:text-8xl font-bold lg:text-left text-green-700">Exclusive Thai Chef's Recipe Hunter</h1>
                         <p className="py-6 pe-10 text-justify lg:text-left text-lg lg:text-xl">Welcome to our Thai recipe website, where you can explore an array of authentic and flavorful Thai dishes from our team of talented Thai chefs. From classic favorites like Pad Thai and Tom Yum Soup to lesser-known gems, our website offers a wide selection of recipes to delight your taste buds.</p>

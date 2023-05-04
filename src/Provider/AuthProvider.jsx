@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
         })
         return unsubscribe()
     }, [])
-    console.log(user);
+    const [error,setError] = useState("")
     const authInfo = {
         user,
         setUser,
@@ -57,7 +57,9 @@ const AuthProvider = ({ children }) => {
         signInUser,
         logOut,
         loading,
-        profileUpdateNamePhoto
+        profileUpdateNamePhoto,
+        error,
+        setError
     }
     return (
         <AuthContext.Provider value={authInfo}>
