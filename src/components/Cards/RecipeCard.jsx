@@ -3,7 +3,6 @@ import toast, { Toaster } from 'react-hot-toast';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 
-
 const RecipeCard = ({ recipe }) => {
     const { id, recipeName, ingredients, cookingMethod, rating } = recipe;
     const [buttonDisable, setButtonDisable] = useState(true)
@@ -12,7 +11,6 @@ const RecipeCard = ({ recipe }) => {
         setButtonDisable(false);
     }
     return (
-
         <div className="card w-96 bg-green-50 text-green-700 shadow-xl border-2 border-green-900 text-left mx-auto max-h-fit lg:h-[700px] my-5">
             <div className="card-body font-bold">
                 <h2 className="card-title font-extrabold">Recipe Name: </h2>
@@ -27,13 +25,11 @@ const RecipeCard = ({ recipe }) => {
                 <p>
                     <span className='mr-3'>Rating: {rating}</span>
 
-
-
                     <Rating
                         placeholderRating={rating}
-                        emptySymbol={<FaRegStar/>}
-                        placeholderSymbol={<FaStar/>}
-                        fullSymbol={<FaStar/>}
+                        emptySymbol={<FaRegStar />}
+                        placeholderSymbol={<FaStar />}
+                        fullSymbol={<FaStar />}
                         readonly
                     />
                 </p>

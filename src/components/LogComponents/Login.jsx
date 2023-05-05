@@ -10,9 +10,9 @@ const githubProvider = new GithubAuthProvider();
 const provider = new GoogleAuthProvider();
 
 const Login = () => {
-    const { user, signInUser, createUserPopUp, setUser, error,setError } = useContext(AuthContext);
+    const { user, signInUser, createUserPopUp, setUser, error, setError } = useContext(AuthContext);
     setError("")
-    
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from.pathname || '/'
@@ -31,17 +31,18 @@ const Login = () => {
                 setError("")
             })
             .catch(error => {
-                if(error.message == "Firebase: Error (auth/user-not-found)"){
-               
+                if (error.message == "Firebase: Error (auth/user-not-found)") {
+
                     setError(error.message)
                 }
-                else{
+                else {
                     setError(error.message)
 
-                }})
-                
+                }
+            })
 
-                
+
+
         form.reset()
     }
     const handleGoogleLogIn = (event) => {
@@ -77,13 +78,13 @@ const Login = () => {
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input name="email" type="email" placeholder="Your email" className="input input-bordered w-full max-w-xs" required/>
+                    <input name="email" type="email" placeholder="Your email" className="input input-bordered w-full max-w-xs" required />
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input name="password" type="password" placeholder="Your Password" className="input input-bordered w-full max-w-xs" required/>
+                    <input name="password" type="password" placeholder="Your Password" className="input input-bordered w-full max-w-xs" required />
                 </div>
                 <div>
                     <p className='text-red-500 my-3'>{error}</p>

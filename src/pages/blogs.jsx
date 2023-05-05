@@ -1,33 +1,17 @@
 import React from 'react';
-
-import ReactDOM from "react-dom";
 import Pdf from "react-to-pdf";
-//import "./styles.css";
 const ref = React.createRef();
 const options = {
     orientation: 'landscape',
 };
-// import html2pdf from 'html2pdf.js';
-
-
-// function saveAsPDF() {
-//     const element = document.getElementById('my-div');
-//     html2pdf()
-//       .from(element)
-//       .save();
-//   }
 
 const Blogs = () => {
     return (
-
         <div>
             <h2 className='text-2xl lg:text-6xl font-extrabold text-green-700 my-6'>Blogs</h2>
-            {/* <button onClick={saveAsPDF} className='btn btn-primary border-0 bg-green-700 hover:bg-green-900'>Generate PDF</button> */}
-
             <Pdf targetRef={ref} filename="blog.pdf" options={options}>
                 {({ toPdf }) => <button onClick={toPdf} className='btn bg-green-700 hover:bg-green900'>Generate Pdf</button>}
             </Pdf>
-
             <div ref={ref} id='my-div' className='grid lg:grid-cols-2 gap-4 justify-center items-center mx-auto rounded-2xl w-full bg-green-50'>
                 <div className=" w-96 bg-base-100 shadow-xl lg:h-[350px] max-h-fit mx-auto my-6 border-2 border-green-700 rounded-xl p-2">
                     <div className="">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ChefsCard from '../components/Cards/chefsCard';
 import partner1 from '../assets/partner-1.jpg';
 import partner2 from '../assets/partner-2.jpg';
@@ -7,7 +7,6 @@ import partner3 from '../assets/partner-3.jpg';
 import partner4 from '../assets/partner-4.jpg';
 import partner5 from '../assets/partner-5.png';
 import LazyLoad from 'react-lazy-load';
-
 
 const Home = () => {
     const [chefs, setChefs] = useState([]);

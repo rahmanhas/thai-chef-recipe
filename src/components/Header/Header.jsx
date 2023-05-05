@@ -10,7 +10,7 @@ const Header = () => {
     //delete this line
     //const user = 1; 
     const { user, logOut } = useContext(AuthContext);
-   
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from.pathname || '/'
@@ -60,7 +60,7 @@ const Header = () => {
                                     src={user.photoURL}
                                     alt={user.displayName}
                                     title={user.displayName}
-                                    style={{ maxWidth: "100%"}}
+                                    style={{ maxWidth: "100%" }}
                                 />
                                 <button className='btn btn-primary bg-green-700 hover:bg-green-900 border-0' onClick={handleLogOut}>Log Out</button>
                             </> :

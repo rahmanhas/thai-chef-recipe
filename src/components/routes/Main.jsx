@@ -9,10 +9,10 @@ const Main = () => {
     const navigation = useNavigation()
     return (
         <div>
-            <Header/>
-            <div>{navigation.state==="loading" && <button className="btn loading">loading</button>}</div>
-            <Outlet/>
-            <Footer/>
+            <Header />
+            <div>{navigation.state === "loading" && <button className="btn loading">loading</button>}</div>
+            <Outlet />
+            <Footer />
         </div>
     );
 };
