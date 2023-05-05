@@ -17,7 +17,7 @@ const Register = () => {
             setError("Please enter your email and password.");
             return;
         }
-        if (password.length < 7) {
+        if (password.length < 6) {
             setError("password must be higher than 6 characters");
             return
         }
