@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../Provider/AuthProvider';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 import { MdFoodBank } from "react-icons/md";
-import ImageWithToolTip from './Cards/ImageWithToolTip';
-import ImageHoverName from './Cards/ImageWithToolTip';
+import ImageWithToolTip from '../Cards/ImageWithToolTip';
+import ImageHoverName from '../Cards/ImageWithToolTip';
 
 const Header = () => {
     //delete this line
@@ -40,7 +40,7 @@ const Header = () => {
                         </ul>
                     </div>
 
-                    <Link className=' text-lg lg:text-4xl font-bold text-green-700' to="/">Thai Chef's Recipe Hunter</Link>
+                    <Link className=' text-xs lg:text-4xl font-bold text-green-700' to="/">Thai Chef's Recipe Hunter</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

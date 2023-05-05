@@ -1,7 +1,9 @@
 import React from 'react';
-import Header from '../Header';
+
 import { Outlet, useNavigate, useNavigation } from 'react-router-dom';
-import Footer from '../Footer';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+
 
 const Main = () => {
     const navigation = useNavigation()

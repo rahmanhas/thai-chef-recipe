@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import RecipeCard from '../components/Cards/RecipeCard';
-
+import LazyLoad from 'react-lazy-load';
 const ChefInfo = () => {
 
     const __id = useParams().id
@@ -16,7 +16,10 @@ const ChefInfo = () => {
         <div>
             <div className="my-12 hero min-h-fit bg-green-50 rounded-2xl">
                 <div className="hero-content flex-col lg:flex-row">
+                    
+                    <LazyLoad height={300}>
                     <img src={chefPicture} className="max-w-sm rounded-lg shadow-2xl h-[300px] w-[300px]" />
+                    </LazyLoad>
                     <div>
                         <h1 className="py-12 text-5xl font-bold text-green-700">{chefName}</h1>
                         <p className="pt-6 text-green-700">{bio}</p>
@@ -28,9 +31,9 @@ const ChefInfo = () => {
             </div>
             <div className='grid lg:grid-cols-3 my-12 justify-center items-center mx-auto'>
                 {
-                    recipes?.map(recipe=> <RecipeCard
-                    key={recipe._id}
-                    recipe={recipe}
+                    recipes?.map(recipe => <RecipeCard
+                        key={recipe._id}
+                        recipe={recipe}
                     ></RecipeCard>)
                 }
             </div>
