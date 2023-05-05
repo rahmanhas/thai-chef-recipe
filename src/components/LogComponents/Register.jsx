@@ -17,7 +17,7 @@ const Register = () => {
             setError("Please enter your email and password.");
             return;
         }
-        if (password.length < 6) {
+        if (password.length < 5) {
             setError("password must be higher than 6 characters");
             return
         }
@@ -25,7 +25,7 @@ const Register = () => {
         console.log(name, email, password);
         createUser(email, password)
             .then(result => {
-                const isAuthenticated = authenticateUser(email, password);
+                
                 const createdUser = result.user;
                 profileUpdateNamePhoto(name, photoURL);
                 form.reset()
