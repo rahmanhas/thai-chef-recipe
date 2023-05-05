@@ -4,7 +4,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 
 
 const Register = () => {
-    const { createUser,profileUpdateNamePhoto,error,setError,setUser } = useContext(AuthContext);
+    const { createUser, profileUpdateNamePhoto, error, setError, setUser } = useContext(AuthContext);
     const handleRegister = event => {
         setError("")
         event.preventDefault();
@@ -13,12 +13,12 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photoURL = form.photoURL.value;
-        if(password.length <7){
-            setError("password must be higher than 6 characters");
-            return
+        if (email.trim() === "" || password.trim() === "") {
+            setError("Please enter your email and password.");
+            return;
         }
-        if(password===""){
-            setError("Enter Password");
+        if (password.length < 7) {
+            setError("password must be higher than 6 characters");
             return
         }
 
@@ -27,7 +27,7 @@ const Register = () => {
             .then(result => {
                 const isAuthenticated = authenticateUser(email, password);
                 const createdUser = result.user;
-                profileUpdateNamePhoto(name,photoURL);
+                profileUpdateNamePhoto(name, photoURL);
                 form.reset()
                 setError("")
             })
@@ -44,19 +44,19 @@ const Register = () => {
                     <label className="label">
                         <span className="label-text">Name</span>
                     </label>
-                    <input name="name" type="text" placeholder="Your Name" className="input input-bordered w-full max-w-xs" required/>
+                    <input name="name" type="text" placeholder="Your Name" className="input input-bordered w-full max-w-xs" required />
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input name="email" type="email" placeholder="Your email" className="input input-bordered w-full max-w-xs" required/>
+                    <input name="email" type="email" placeholder="Your email" className="input input-bordered w-full max-w-xs" />
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Password</span>
                     </label>
-                    <input name="password" type="password" placeholder="Your Password" className="input input-bordered w-full max-w-xs" required/>
+                    <input name="password" type="password" placeholder="Your Password" className="input input-bordered w-full max-w-xs" />
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label">

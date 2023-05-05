@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/chefinfo/:id',
-        element: <PrivateRoute><ChefInfo /></PrivateRoute>
+        element: <PrivateRoute><ChefInfo></ChefInfo></PrivateRoute>
       },
     ]
 

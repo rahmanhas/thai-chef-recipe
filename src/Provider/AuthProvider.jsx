@@ -42,7 +42,6 @@ const AuthProvider = ({ children }) => {
     }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, loggedUser => {
-            //console.log('loggedin user',loggedUser);
             setUser(loggedUser);
             setLoading(false)
         })
@@ -57,6 +56,7 @@ const AuthProvider = ({ children }) => {
         signInUser,
         logOut,
         loading,
+        setLoading,
         profileUpdateNamePhoto,
         error,
         setError
